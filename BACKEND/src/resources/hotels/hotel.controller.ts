@@ -42,7 +42,6 @@ class HotelController implements Controller {
                 search,
             };
             const result = await this.HotelService.getHotels(requestParams);
-            console.log('result: ', result);
             res.status(200).json(result);
         } catch (error: any) {
             next(new HttpException (400, error.message));

@@ -1,4 +1,4 @@
-# tnstall dependencies
+# install dependencies
 `npm install`
 
 # run 
