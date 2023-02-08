@@ -6,7 +6,7 @@ export interface ResponseObject {
     description: string;
     minPrice: number;
     currencyCode: string;
-    distanceToCenterKm: number;
+    distanceToCenterKm?: number;
     firstDeal?: {
         headline: string;
         details: string;
