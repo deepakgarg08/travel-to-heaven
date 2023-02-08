@@ -116,8 +116,6 @@ class HotelService {
         } catch (error: any) {
             throw new Error("Something went wrong: " + error.message)
         }
-
-
     }
 
 

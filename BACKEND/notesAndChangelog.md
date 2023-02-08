@@ -28,5 +28,7 @@ http://travel-to-heaven.eu-central-1.elasticbeanstalk.com/v1/recruiting/hotels?s
 * loggers
 * swagger docs
 * jsodcs
+* eslinter can be configured in better way
 
 <!-- Frontend dev part is remaining -->
+

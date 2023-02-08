@@ -1,6 +1,7 @@
 import { RequestHandler, Request, Response, NextFunction } from 'express';
 import Joi from 'joi';
 
+// to validate mongodb schema
 function validationMiddleware (schema: Joi.Schema): RequestHandler {
     return async (
         req: Request,
