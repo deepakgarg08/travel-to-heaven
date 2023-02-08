@@ -1,8 +1,7 @@
-import {IParameters, Result} from './hotel.interface';
+import {IDeals, IImages, IParameters, Result} from './hotel.interface';
 import dummyData from '../../data/hotels.json';
 import {ResponseObject} from './hotel.interface';
 import haversineDistance from "haversine-distance";
-
 
 class HotelService {
     // stores final response result
@@ -23,20 +22,61 @@ class HotelService {
         return haversineDistance(berlinCordinates, hotelLocation);
     }
 
-    private getResponseBasedOnlanguage(obj: any, lang: string): string {
-        // console.log('lang: ', lang);
-        // console.log('obj: ', obj); 
+    private getResponseBasedOnlanguage(obj: object, lang: string): string {
+        if (Object.keys(obj).length === 0) {
+            return ""
+        }
+        let res!: string
         const languages = ["en-US", "de-DE", "fr-FR", "es-ES"];
-        let res: string = obj[lang as keyof typeof obj] as string
+        res = obj[lang as keyof typeof obj] as string || ""
         if (res) {
             return res
         }
         for (const language of languages) {
-            const result = obj[language as keyof typeof obj] as string
-            if (result !== null) {
+            const result = obj[language as keyof typeof obj] as string || ""
+            if (result !== '') {
                 return result
             }
         }
+        return res
+    }
+
+    private parseDeals(data: any[], lang: string): IDeals[] {
+        if (data.length < 1) {
+            return [{
+                headline: '',
+                details: ''
+            }]
+        }
+        const res = data.map(deal => {
+            let headline: string = this.getResponseBasedOnlanguage(deal.headline, lang)
+            let details: string = this.getResponseBasedOnlanguage(deal.details, lang)
+
+            let container = {
+                headline,
+                details
+            }
+            return container
+        })
+        return res
+    }
+
+    private parseImages(data: any[], lang: string): IImages[] {
+        if (data.length < 1) {
+            return [{
+                url: '',
+                caption: ''
+            }]
+        }
+        const res = data.map(image => {
+            const url = image.url || ""
+            const caption = this.getResponseBasedOnlanguage(image.caption, lang)
+            let container = {
+                url,
+                caption
+            }
+            return container
+        })
         return res
     }
 
@@ -46,39 +86,31 @@ class HotelService {
         let {hotelId, lang = 'en-US', search} = requestParams;
         let result;
         this.finalResponse = [];
-        let responseObject!: ResponseObject;
 
         /**
          * GET https://{HOSTNAME}/v1/recruiting/hotels/{HOTEL_ID}
          * this if block considers both hotelId and lang
          */
         if (hotelId) {
+
             result = await dummyData.find((hotel) => hotel.id === hotelId);
 
             if (result) {
                 const {id, name, address, city, description, minPrice, currencyCode, deals, images, lat, lng} = result;
                 const distanceToCenterKm: number = this.calculateHaversineDistance(lat, lng)
-
-                responseObject = {
+                let tempResponse = {
                     id,
+                    minPrice,
+                    currencyCode,
+                    distanceToCenterKm,
                     name: this.getResponseBasedOnlanguage(name, lang),
                     address: this.getResponseBasedOnlanguage(address, lang),
                     city: this.getResponseBasedOnlanguage(city, lang),
                     description: this.getResponseBasedOnlanguage(description, lang),
-                    minPrice,
-                    distanceToCenterKm,
-                    currencyCode,
-                    deals: [{
-                        headline: deals.map(deal => deal.headline[lang as keyof typeof deal.headline])[0] || "",
-                        details: deals.map(deal => deal.details[lang as keyof typeof deal.details])[0] || ""
-                    }],
-                    // TODO image structure 
-                    images: [{
-                        url: '',
-                        caption: ''
-                    }]
+                    deals: this.parseDeals(deals, lang),
+                    images: this.parseImages(images, lang)
                 };
-                this.finalResponse.push(responseObject)
+                this.finalResponse.push(tempResponse)
             }
 
         }
@@ -91,29 +123,21 @@ class HotelService {
          */
 
         else if (lang) {
-            console.log('else if:...... ');
             this.finalResponse = await dummyData.map(hotel => {
                 let container!: ResponseObject; // TODO remove any
                 const {id, name, address, city, description, minPrice, currencyCode, deals, images, lat, lng} = hotel;
                 const distanceToCenterKm: number = this.calculateHaversineDistance(lat, lng)
-
                 container = {
                     id,
-                    name: this.getResponseBasedOnlanguage(name, lang),
                     minPrice,
                     currencyCode,
+                    distanceToCenterKm,
+                    name: this.getResponseBasedOnlanguage(name, lang),
                     address: this.getResponseBasedOnlanguage(address, lang),
                     city: this.getResponseBasedOnlanguage(city, lang),
                     description: this.getResponseBasedOnlanguage(description, lang),
-                    distanceToCenterKm,
-                    firstDeal: {
-                        headline: deals.map(deal => deal.headline[lang as keyof typeof deal.headline])[0] || "",
-                        details: deals.map(deal => deal.details[lang as keyof typeof deal.details])[0] || ""
-                    },
-                    firstImage: {
-                        url: images.map(image => image.url)[0] || "",
-                        caption: images.map(image => image.caption[lang as keyof typeof image.caption])[0] as string || ""
-                    }
+                    firstDeal: this.parseDeals(deals, lang)[0] || "",
+                    firstImage: this.parseImages(images, lang)[0] || ""
                 }
                 return container
             })
@@ -125,9 +149,11 @@ class HotelService {
          * this is case insensitive
          * GET https://{HOSTNAME}/v1/recruiting/hotels?search={SEARCH_TERM}&lang={LANG}
          */
-        // if (search) {
-        //     // this.finalResponse.filter(item => {});
-        // }
+        if (search) {
+            this.finalResponse = this.finalResponse.filter(item => {
+                return (item.name.toLowerCase()).includes(search.toLowerCase())
+            })
+        }
 
         return this.finalResponse;
     }
