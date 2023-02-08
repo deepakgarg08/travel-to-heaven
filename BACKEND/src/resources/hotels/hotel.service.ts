@@ -5,23 +5,33 @@ import haversineDistance from "haversine-distance";
 
 class HotelService {
     // stores final response result
-    private finalResponse: ResponseObject[] = [];
+    private finalResponse: ResponseObject[] = []
 
     private calculateHaversineDistance(
         latitude: number,
         longitude: number
     ): number {
-        const berlinCordinates: { latitude: number; longitude: number } = {
-            latitude: 37.8136,
-            longitude: 144.9631,
-        };
-        const hotelLocation: { latitude: number; longitude: number } = {
-            latitude,
-            longitude,
-        };
-        return haversineDistance(berlinCordinates, hotelLocation);
+        let haversineDist!: number;
+        try {
+            const berlinCordinates: { latitude: number; longitude: number } = {
+                latitude: 37.8136,
+                longitude: 144.9631,
+            };
+            const hotelLocation: { latitude: number; longitude: number } = {
+                latitude,
+                longitude,
+            };
+            haversineDist = haversineDistance(berlinCordinates, hotelLocation);
+        } catch (error) {
+            throw new Error("Haversine Distance calculation failed")
+        }
+        return haversineDist;
     }
 
+    /**
+     * Handles language fallbacks
+     * this gets different types of object values, which can have different structure
+     */
     private getResponseBasedOnlanguage(obj: object, lang: string): string {
         if (Object.keys(obj).length === 0) {
             return ""
@@ -29,9 +39,8 @@ class HotelService {
         let res!: string
         const languages = ["en-US", "de-DE", "fr-FR", "es-ES"];
         res = obj[lang as keyof typeof obj] as string || ""
-        if (res) {
-            return res
-        }
+        if (res) return res
+
         for (const language of languages) {
             const result = obj[language as keyof typeof obj] as string || ""
             if (result !== '') {
@@ -41,58 +50,63 @@ class HotelService {
         return res
     }
 
-    private parseDeals(data: any[], lang: string): IDeals[] {
+    /**
+     * structure deals object array based on IDeals interface
+     */
+    private parseDeals(data: { headline: {}, details: {} }[], lang: string): IDeals[] {
         if (data.length < 1) {
             return [{
                 headline: '',
                 details: ''
             }]
         }
-        const res = data.map(deal => {
-            let headline: string = this.getResponseBasedOnlanguage(deal.headline, lang)
-            let details: string = this.getResponseBasedOnlanguage(deal.details, lang)
-
-            let container = {
-                headline,
-                details
-            }
-            return container
+        return data.map(dl => {
+            let headline: string = this.getResponseBasedOnlanguage(dl.headline, lang)
+            let details: string = this.getResponseBasedOnlanguage(dl.details, lang)
+            return {headline, details}
         })
-        return res
+
     }
 
-    private parseImages(data: any[], lang: string): IImages[] {
+    /**
+     * structure images object array based on IImages interface
+     */
+    private parseImages(data: { url: string, caption: {} }[], lang: string): IImages[] {
         if (data.length < 1) {
             return [{
                 url: '',
                 caption: ''
             }]
         }
-        const res = data.map(image => {
+        return data.map(image => {
             const url = image.url || ""
-            const caption = this.getResponseBasedOnlanguage(image.caption, lang)
-            let container = {
-                url,
-                caption
-            }
-            return container
+            const caption: string = this.getResponseBasedOnlanguage(image.caption, lang)
+            return {url, caption}
         })
-        return res
+
     }
 
-    private async filterHotels(
-        requestParams: IParameters
-    ): Promise<ResponseObject[]> {
-        let {hotelId, lang = 'en-US', search} = requestParams;
-        let result;
-        this.finalResponse = [];
+    // private buildResponseObject(): Promise<ResponseObject[]>{
+    //     return this.finalResponse
+    // }
 
+    /**
+     * This below request will filterHotels basesd on path params and query params provided by user
+     * If none is provided, by default fallback language value is used as "en-us" to get hotel list
+     *
+     * Here async await is not required, just kept for the purpose of when using Database in future
+     */
+
+    private async filterHotels(requestParams: IParameters): Promise<ResponseObject[]> {
+
+        let {hotelId, lang = "en-US", search} = requestParams;
+        let result;
+        this.finalResponse = []
         /**
-         * GET https://{HOSTNAME}/v1/recruiting/hotels/{HOTEL_ID}
+         * GET https://{HOSTNAME}/v1/recruiting/hotels/{HOTEL_ID}?lang={LANG}
          * this if block considers both hotelId and lang
          */
         if (hotelId) {
-
             result = await dummyData.find((hotel) => hotel.id === hotelId);
 
             if (result) {
@@ -117,17 +131,16 @@ class HotelService {
 
         /**
          *
-         * This else if block considers lang provided by user
+         * This else if block considers lang provided by user, if not using default fallback language set "en-US"
+         * in other words this will always run
          * GET https://{HOSTNAME}/v1/recruiting/hotels/{HOTEL_ID}?lang={LANG}
          * GET https://{HOSTNAME}/v1/recruiting/hotels?lang={LANG}
          */
-
         else if (lang) {
             this.finalResponse = await dummyData.map(hotel => {
-                let container!: ResponseObject; // TODO remove any
                 const {id, name, address, city, description, minPrice, currencyCode, deals, images, lat, lng} = hotel;
                 const distanceToCenterKm: number = this.calculateHaversineDistance(lat, lng)
-                container = {
+                let container: ResponseObject = {
                     id,
                     minPrice,
                     currencyCode,
@@ -155,7 +168,7 @@ class HotelService {
             })
         }
 
-        return this.finalResponse;
+        return this.finalResponse
     }
 
     /***
@@ -166,14 +179,14 @@ class HotelService {
      */
     public async getHotels(requestParams: IParameters): Promise<Result> {
         try {
-            const result = await this.filterHotels(requestParams);
-
-            return {success: true, error: '', result};
+            const result = await this.filterHotels(requestParams)
+            return {success: true, error: "", result};
         } catch (error: any) {
-
+            console.error('error: ', error.message);
             throw new Error(error.message);
         }
     }
 }
 
 export default HotelService;
+
