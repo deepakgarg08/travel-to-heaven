@@ -1,5 +1,5 @@
-# install dependencies
+### install dependencies
 `npm install`
 
-# run 
+### To run 
 `npm run dev`
