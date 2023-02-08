@@ -1,6 +1,6 @@
-import {IDeals, IImages, IParameters, Result} from './hotel.interface';
-import dummyData from '../../data/hotels.json';
-import {ResponseObject} from './hotel.interface';
+import {IDeals, IImages, IParameters, Result} from "../../interfaces/hotel.interface";
+import dummyData from "../../data/hotels.json";
+import {ResponseObject} from "../../interfaces/hotel.interface";
 import haversineDistance from "haversine-distance";
 
 class HotelService {
@@ -32,6 +32,7 @@ class HotelService {
      * Handles language fallbacks
      * this gets different types of object values, which can have different structure
      */
+
     private getResponseBasedOnlanguage(obj: object, lang: string): string {
         if (Object.keys(obj).length === 0) {
             return ""
@@ -86,9 +87,39 @@ class HotelService {
 
     }
 
-    // private buildResponseObject(): Promise<ResponseObject[]>{
-    //     return this.finalResponse
-    // }
+    /**
+     * create final ResponseObject
+     */
+    private buildResponseObject(result: any, lang: string, isHotelId: boolean): ResponseObject {
+        try {
+            const {id, name, address, city, description, minPrice, currencyCode, deals, images, lat, lng} = result;
+            const distanceToCenterKm: number = this.calculateHaversineDistance(lat, lng)
+            let respObj: ResponseObject =
+                {
+                    id,
+                    minPrice,
+                    currencyCode,
+                    distanceToCenterKm,
+                    name: this.getResponseBasedOnlanguage(name, lang),
+                    address: this.getResponseBasedOnlanguage(address, lang),
+                    city: this.getResponseBasedOnlanguage(city, lang),
+                    description: this.getResponseBasedOnlanguage(description, lang),
+                }
+            if ( isHotelId ) {
+                respObj.deals = this.parseDeals(deals, lang)
+                respObj.images = this.parseImages(images, lang)
+            } else {
+                respObj.firstDeal = this.parseDeals(deals, lang)[0] || ""
+                respObj.firstImage = this.parseImages(images, lang)[0] || ""
+            }
+            return respObj
+        } catch (error: any) {
+            throw new Error("Something went wrong: " + error.message)
+        }
+
+
+    }
+
 
     /**
      * This below request will filterHotels basesd on path params and query params provided by user
@@ -102,6 +133,7 @@ class HotelService {
         let {hotelId, lang = "en-US", search} = requestParams;
         let result;
         this.finalResponse = []
+        let isHotelId = true
         /**
          * GET https://{HOSTNAME}/v1/recruiting/hotels/{HOTEL_ID}?lang={LANG}
          * this if block considers both hotelId and lang
@@ -110,23 +142,9 @@ class HotelService {
             result = await dummyData.find((hotel) => hotel.id === hotelId);
 
             if (result) {
-                const {id, name, address, city, description, minPrice, currencyCode, deals, images, lat, lng} = result;
-                const distanceToCenterKm: number = this.calculateHaversineDistance(lat, lng)
-                let tempResponse = {
-                    id,
-                    minPrice,
-                    currencyCode,
-                    distanceToCenterKm,
-                    name: this.getResponseBasedOnlanguage(name, lang),
-                    address: this.getResponseBasedOnlanguage(address, lang),
-                    city: this.getResponseBasedOnlanguage(city, lang),
-                    description: this.getResponseBasedOnlanguage(description, lang),
-                    deals: this.parseDeals(deals, lang),
-                    images: this.parseImages(images, lang)
-                };
+                const tempResponse = this.buildResponseObject(result, lang, isHotelId)
                 this.finalResponse.push(tempResponse)
             }
-
         }
 
         /**
@@ -137,22 +155,8 @@ class HotelService {
          * GET https://{HOSTNAME}/v1/recruiting/hotels?lang={LANG}
          */
         else if (lang) {
-            this.finalResponse = await dummyData.map(hotel => {
-                const {id, name, address, city, description, minPrice, currencyCode, deals, images, lat, lng} = hotel;
-                const distanceToCenterKm: number = this.calculateHaversineDistance(lat, lng)
-                let container: ResponseObject = {
-                    id,
-                    minPrice,
-                    currencyCode,
-                    distanceToCenterKm,
-                    name: this.getResponseBasedOnlanguage(name, lang),
-                    address: this.getResponseBasedOnlanguage(address, lang),
-                    city: this.getResponseBasedOnlanguage(city, lang),
-                    description: this.getResponseBasedOnlanguage(description, lang),
-                    firstDeal: this.parseDeals(deals, lang)[0] || "",
-                    firstImage: this.parseImages(images, lang)[0] || ""
-                }
-                return container
+            this.finalResponse = await dummyData.map(result => {
+                return this.buildResponseObject(result, lang, !isHotelId)
             })
         }
 
@@ -189,4 +193,3 @@ class HotelService {
 }
 
 export default HotelService;
-

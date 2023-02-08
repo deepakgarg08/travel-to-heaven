@@ -1,7 +1,7 @@
 import { Router, Request, Response, NextFunction } from "express";
-import Controller from "../../utils/interfaces/controller.interface";
-import HttpException from "../../utils/exceptions/http.exceptions";
-import HotelService from "./hotel.service";
+import Controller from "./controller.interface";
+import HttpException from "../utils/exceptions/http.exceptions";
+import HotelService from "../services/hotels/hotel.service";
 
 /**
  * these import can be used to validate the monogoose schema

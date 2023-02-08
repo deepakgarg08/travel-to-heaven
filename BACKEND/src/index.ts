@@ -1,7 +1,8 @@
 import 'dotenv/config';
 import App from './app';
 import validateEnv from './utils/validateEnv';
-import HotelController from "./resources/hotels/hotel.controller";
+import HotelController from "./controllers/hotel.controller";
+
 
 validateEnv();
 

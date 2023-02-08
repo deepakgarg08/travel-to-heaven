@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import compression from 'compression';
 import cors from 'cors';
 import morgan from 'morgan';
-import Controller from './utils/interfaces/controller.interface';
+import Controller from './controllers/controller.interface';
 import ErrorMiddleware from './middlewares/error.middleware';
 
 class App {
@@ -14,7 +14,7 @@ class App {
         this.express = express();
         this.port = port;
 
-        // this.initialiseDatabaseConnection();
+        this.initialiseDatabaseConnection();
         this.initialiseMiddleware();
         this.initialiseControllers(controllers);
         this.initialiseErrorHandling();
@@ -30,7 +30,7 @@ class App {
 
     private initialiseControllers (controllers: Controller[]): void {
         controllers.forEach((controller: Controller) => {
-            this.express.use('/v1/recruiting/', controller.router);
+            this.express.use('/v1/recruiting', controller.router);
         });
     }
 
@@ -39,19 +39,25 @@ class App {
     }
 
     private initialiseDatabaseConnection (): void {
-        const { MONGO_USER, MONGO_PASSWORD, MONGO_PATH } = process.env;
+    //     // const { MONGO_USER, MONGO_PASSWORD, MONGO_PATH } = process.env;
 
-        // normally
-        // const MONGO_URL =  `mongodb://${MONGO_USER}:${MONGO_PASSWORD}${MONGO_PATH}`
+    //     /**
+    //      * Via normal url
+    //      *  */ 
+    //     // const MONGO_URL =  `mongodb://${MONGO_USER}:${MONGO_PASSWORD}${MONGO_PATH}`
         
-        // in case of mongodb atlas
-        // const MONGO_URL: string =  `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}${MONGO_PATH}`
+    //     /**
+    //      * in case of mongodb atlas
+    //      *  */ 
+
+    //     // const MONGO_URL: string =  `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}${MONGO_PATH}`
         
-        // mongoose
-        //     .set('strictQuery', false)
-        //     .connect(`${MONGO_URL}`)
-        //     .then(() => console.log('Database Connected'))
-        //     .catch(err => console.log(err));
+    //     // TO create connection with Mongo DB
+    //     // mongoose
+    //     //     .set('strictQuery', false)
+    //     //     .connect(`${MONGO_URL}`)
+    //     //     .then(() => console.log('Database Connected'))
+    //     //     .catch(err => console.log(err));
     }
 
     public listen (): void {
