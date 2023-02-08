@@ -72,6 +72,7 @@ class HotelService {
                         headline: deals.map(deal => deal.headline[lang as keyof typeof deal.headline])[0] || "",
                         details: deals.map(deal => deal.details[lang as keyof typeof deal.details])[0] || ""
                     }],
+                    // TODO image structure 
                     images: [{
                         url: '',
                         caption: ''
@@ -89,12 +90,34 @@ class HotelService {
          * GET https://{HOSTNAME}/v1/recruiting/hotels?lang={LANG}
          */
 
-        // else if (lang) {
+        else if (lang) {
+            console.log('else if:...... ');
+            this.finalResponse = await dummyData.map(hotel => {
+                let container!: ResponseObject; // TODO remove any
+                const {id, name, address, city, description, minPrice, currencyCode, deals, images, lat, lng} = hotel;
+                const distanceToCenterKm: number = this.calculateHaversineDistance(lat, lng)
 
-        //     await dummyData.map(result => {
-        //         // TODO
-        //     });
-        // }
+                container = {
+                    id,
+                    name: this.getResponseBasedOnlanguage(name, lang),
+                    minPrice,
+                    currencyCode,
+                    address: this.getResponseBasedOnlanguage(address, lang),
+                    city: this.getResponseBasedOnlanguage(city, lang),
+                    description: this.getResponseBasedOnlanguage(description, lang),
+                    distanceToCenterKm,
+                    firstDeal: {
+                        headline: deals.map(deal => deal.headline[lang as keyof typeof deal.headline])[0] || "",
+                        details: deals.map(deal => deal.details[lang as keyof typeof deal.details])[0] || ""
+                    },
+                    firstImage: {
+                        url: images.map(image => image.url)[0] || "",
+                        caption: images.map(image => image.caption[lang as keyof typeof image.caption])[0] as string || ""
+                    }
+                }
+                return container
+            })
+        }
 
         /**
          *
