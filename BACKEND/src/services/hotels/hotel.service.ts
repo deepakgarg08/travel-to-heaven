@@ -14,14 +14,15 @@ class HotelService {
         let haversineDist!: number;
         try {
             const berlinCordinates: { latitude: number; longitude: number } = {
-                latitude: 37.8136,
-                longitude: 144.9631,
+                latitude: 52.520008,
+                longitude: 13.404954,
             };
             const hotelLocation: { latitude: number; longitude: number } = {
                 latitude,
                 longitude,
             };
-            haversineDist = haversineDistance(berlinCordinates, hotelLocation);
+            // to convert distance from meter to km
+            haversineDist = Number(((haversineDistance(berlinCordinates, hotelLocation))/1000).toFixed(2));
         } catch (error) {
             throw new Error("Haversine Distance calculation failed")
         }
