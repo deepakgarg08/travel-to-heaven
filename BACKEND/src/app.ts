@@ -6,6 +6,7 @@ import morgan from "morgan";
 import Controller from "./interfaces/controller.interface";
 import ErrorMiddleware from "./middlewares/error.middleware";
 import logger from "./utils/logger";
+import path from "path";
 class App {
     public express: Application;
     public port: number;
@@ -32,6 +33,13 @@ class App {
         this.express.use(express.json());
         this.express.use(express.urlencoded({ extended: false }));
         this.express.use(compression());
+
+        this.express.use(express.static(path.resolve(__dirname, "./build")));
+        
+        this.express.get("/", (req, res) => {
+            res.sendFile(path.resolve(__dirname, "build", "index.html"));
+          });
+
         logger.info("Exit- 'app.ts/initialiseMiddleware'");
     }
 
