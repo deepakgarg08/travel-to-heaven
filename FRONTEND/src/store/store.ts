@@ -4,7 +4,6 @@ import hotelReducer from "./hotelSlice";
 const store = configureStore({
   reducer: {
     hotels: hotelReducer,
-
   },
 });
 

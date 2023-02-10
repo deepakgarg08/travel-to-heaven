@@ -1,0 +1,188 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Work+Sans&display=swap");
+
+html {
+  font-family: "Josefin Sans", sans-serif;
+  font-family: "Work Sans", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Josefin Sans", sans-serif;
+  font-family: "Work Sans", sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #304ffe !important;
+}
+
+.App {
+  margin: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin: 20px auto;
+}
+.search_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search_bar {
+  /* margin: 20px 0px 20px 0px; */
+  border: 1px solid rgb(175, 175, 175);
+  height: 30px;
+  /* width: 260px; */
+  background-color: white;
+  position: relative;
+  padding: 20px;
+  transition: 0.5s;
+}
+
+.sort_and_filter{
+  display: flex;
+}
+
+.search_bar:hover,
+.search_bar:focus {
+  border: 1.5px solid #009688;
+  background-color: white;
+}
+
+.search_icon {
+  height: 30px;
+  position: absolute;
+}
+
+.hotels_list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hotel_card {
+  flex: 0 0 50%;
+  margin: 30px;
+  display: flex;
+  height: auto;
+  justify-content: space-between;
+  border: 1px solid rgb(175, 175, 175);
+  padding: 8px;
+  background-color: white;
+  transition: 0.3s;
+}
+
+.hotel_card:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  margin: 30px;
+  -webkit-box-shadow: -1px 6px 13px -3px rgba(0, 0, 0, 0.69);
+  -moz-box-shadow: -1px 6px 13px -3px rgba(0, 0, 0, 0.69);
+  box-shadow: -1px 6px 13px -3px rgba(0, 0, 0, 0.69);
+}
+
+.hotel_info {
+  width: 220px;
+}
+
+.hotel_list_view_image {
+  object-fit: cover;
+  width: 200px;
+  margin: -5px 10px -5px -5px;
+  /* border-radius: 12px; */
+}
+
+.hotel_page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px 350px;
+  border: 1px solid rgb(175, 175, 175);
+  padding: 10px;
+  -webkit-box-shadow: -1px 6px 13px -3px rgba(0, 0, 0, 0.69);
+  -moz-box-shadow: -1px 6px 13px -3px rgba(0, 0, 0, 0.69);
+  box-shadow: -1px 6px 13px -3px rgba(0, 0, 0, 0.69);
+  background-color: white;
+  transition: 0.3s all;
+}
+
+.hotel_details {
+  padding: 10px;
+}
+
+.carousel {
+  transition: 0.3s;
+}
+
+.carousel img {
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 640px) {
+  .hotel_list {
+    justify-content: end !important;
+  }
+  .hotel_card {
+    width: 90%;
+    height: auto;
+    margin: 10px;
+  }
+  .header {
+    /* display: flex; */
+    flex-direction: column-reverse;
+    /* align-items: center; */
+    /* justify-content: center; */
+  }
+
+  .search_bar {
+    width: 150px;
+  }
+
+  .sort_and_filter {
+    /* flex-direction: column; */
+  }
+  .hotel_page {
+    margin: 100px 10px;
+  }
+}
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .hotel_card {
+    width: 90%;
+    height: auto;
+  }
+
+  .header {
+    /* display: flex; */
+    /* flex-direction: column; */
+
+  }
+  .hotel_page {
+    margin: 90px;
+  }
+}
+
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation: portrait) {
+  .hotels_list {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .hotel_page {
+    width: 100%;
+    margin: 10px 0px;
+  } /* your css rules for ipad portrait */
+}
+@media all and (device-width: 1024px) and (device-height: 768px) and (orientation: landscape) {
+  .hotel_card {
+    width: 25%;
+  }
+  .hotel_page {
+    margin: 10px 10px;
+  } /* your css rules for ipad landscape */
+}
