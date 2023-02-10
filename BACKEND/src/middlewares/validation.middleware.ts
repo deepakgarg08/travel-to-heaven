@@ -1,8 +1,10 @@
-import { RequestHandler, Request, Response, NextFunction } from 'express';
-import Joi from 'joi';
+import { RequestHandler, Request, Response, NextFunction } from "express";
+import Joi from "joi";
+import logger from "../utils/logger";
 
 // to validate mongodb schema
-function validationMiddleware (schema: Joi.Schema): RequestHandler {
+function validationMiddleware(schema: Joi.Schema): RequestHandler {
+    logger.info("Enter- '/middlewares/validation.middleware.ts/validationMiddleware'");
     return async (
         req: Request,
         res: Response,
@@ -11,7 +13,7 @@ function validationMiddleware (schema: Joi.Schema): RequestHandler {
         const validationOptions = {
             abortEarly: false,
             allowUnknown: true,
-            stripUnknown: true
+            stripUnknown: true,
         };
         try {
             const value = await schema.validateAsync(
@@ -19,15 +21,19 @@ function validationMiddleware (schema: Joi.Schema): RequestHandler {
                 validationOptions
             );
             req.body = value;
-
             next();
-        } catch (e: any) {
+        } catch (error: any) {
+            logger.error(
+                "Exit- '/middlewares/validation.middleware.ts/validationMiddleware'",
+                error
+            );
             const errors: string[] = [];
-            e.details.forEach((error: Joi.ValidationErrorItem) => {
+            error.details.forEach((error: Joi.ValidationErrorItem) => {
                 errors.push(error.message);
             });
             res.status(400).send({ errors: errors });
         }
+        logger.info("Exit- '/middlewares/validation.middleware.ts/validationMiddleware'");
     };
 }
 

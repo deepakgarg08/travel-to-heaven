@@ -20,7 +20,7 @@ export interface ResponseObject {
         headline: string;
         details: string;
     }[];
-    
+
     images?: {
         url: string;
         caption: string;
@@ -31,7 +31,6 @@ export interface Result {
     error: string;
     result: Array<ResponseObject>;
 }
-
 
 export interface IParameters {
     hotelId: number;

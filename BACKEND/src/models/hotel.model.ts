@@ -1,7 +1,7 @@
 /**
- * 
+ *
  * sample schema file
- * 
+ *
  */
 
 // import { model, Schema } from 'mongoose';
