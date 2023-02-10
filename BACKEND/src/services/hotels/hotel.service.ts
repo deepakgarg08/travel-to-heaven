@@ -1,3 +1,4 @@
+import { RawData} from './../../interfaces/rawData.interface';
 import {IDeals, IImages, IParameters, Result} from "../../interfaces/hotel.interface";
 import dummyData from "../../data/hotels.json";
 import {ResponseObject} from "../../interfaces/hotel.interface";
@@ -62,6 +63,7 @@ class HotelService {
                 details: ''
             }]
         }
+        
         return data.map(dl => {
             let headline: string = this.getResponseBasedOnlanguage(dl.headline, lang)
             let details: string = this.getResponseBasedOnlanguage(dl.details, lang)
@@ -91,7 +93,7 @@ class HotelService {
     /**
      * create final ResponseObject
      */
-    private buildResponseObject(result: any, lang: string, isHotelId: boolean): ResponseObject {
+    private buildResponseObject(result: RawData, lang: string, isHotelId: boolean): ResponseObject {
         try {
             const {id, name, address, city, description, minPrice, currencyCode, deals, images, lat, lng} = result;
             const distanceToCenterKm: number = this.calculateHaversineDistance(lat, lng)
@@ -130,16 +132,17 @@ class HotelService {
     private async filterHotels(requestParams: IParameters): Promise<ResponseObject[]> {
 
         let {hotelId, lang = "en-US", search} = requestParams;
-        let result;
+        let result: RawData;
         this.finalResponse = []
         let isHotelId = true
+
         /**
          * GET https://{HOSTNAME}/v1/recruiting/hotels/{HOTEL_ID}?lang={LANG}
          * this if block considers both hotelId and lang
          */
-        if (hotelId) {
-            result = await dummyData.find((hotel) => hotel.id === hotelId);
 
+        if (hotelId) {
+            result = await dummyData.find((hotel) => hotel.id === hotelId)!;
             if (result) {
                 const tempResponse = this.buildResponseObject(result, lang, isHotelId)
                 this.finalResponse.push(tempResponse)
