@@ -23,6 +23,5 @@ export const filterByDistance = function (data: Hotel[], maxDistance: number) {
     return distance <= maxDistance;
   });
 
-  console.log('result: ', result);
   return result;
 };

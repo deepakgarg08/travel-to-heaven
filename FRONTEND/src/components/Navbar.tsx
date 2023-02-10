@@ -2,7 +2,7 @@ import React from "react";
 import { Filter } from "../components/Filter";
 import { SearchBar } from "../components/SearchBar";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { useAppDispatch } from "../store/hooks";
 import { clearSearchState } from "../store/hotelSlice";
 export const Navbar: React.FC = () => {
   const navigate = useNavigate();

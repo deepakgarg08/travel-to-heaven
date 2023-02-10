@@ -4,7 +4,7 @@ import { useAppSelector } from "../store/hooks";
 import { HotelListCard } from "./HotelListCard";
 
 export const Hotels: React.FC = () => {
-  const { hotels, searchState } = useAppSelector((state) => state.hotels);
+  const { hotels } = useAppSelector((state) => state.hotels);
   return (
     <div className="hotels_list">
       {hotels.map((hotel) => (

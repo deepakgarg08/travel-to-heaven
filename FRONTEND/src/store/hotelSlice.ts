@@ -103,7 +103,6 @@ const hotelSlice = createSlice({
     },
 
     filterHotels(state, action: PayloadAction<filterPayload>) {
-      console.log('action:::::::: ', action);
       const key = action.payload.key;
       // state.tempState = state.hotels;
 
