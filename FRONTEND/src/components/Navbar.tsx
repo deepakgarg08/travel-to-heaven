@@ -11,7 +11,7 @@ export const Navbar: React.FC = () => {
     <div className="header">
       <SearchBar></SearchBar>
       <h1
-        className="text-white"
+        className="text-white heading"
         onClick={() => {
           dispatch(clearSearchState());
           navigate("/");

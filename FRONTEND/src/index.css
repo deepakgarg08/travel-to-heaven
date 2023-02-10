@@ -36,10 +36,8 @@ body {
 }
 
 .search_bar {
-  /* margin: 20px 0px 20px 0px; */
   border: 1px solid rgb(175, 175, 175);
   height: 30px;
-  /* width: 260px; */
   background-color: white;
   position: relative;
   padding: 20px;
@@ -95,7 +93,6 @@ body {
   object-fit: cover;
   width: 200px;
   margin: -5px 10px -5px -5px;
-  /* border-radius: 12px; */
 }
 
 .hotel_page {
@@ -134,19 +131,13 @@ body {
     margin: 10px;
   }
   .header {
-    /* display: flex; */
     flex-direction: column-reverse;
-    /* align-items: center; */
-    /* justify-content: center; */
   }
 
   .search_bar {
     width: 150px;
   }
 
-  .sort_and_filter {
-    /* flex-direction: column; */
-  }
   .hotel_page {
     margin: 100px 10px;
   }
@@ -157,16 +148,13 @@ body {
     height: auto;
   }
 
-  .header {
-    /* display: flex; */
-    /* flex-direction: column; */
-
-  }
   .hotel_page {
     margin: 90px;
   }
 }
-
+.heading{
+  cursor: pointer;
+}
 @media all and (device-width: 768px) and (device-height: 1024px) and (orientation: portrait) {
   .hotels_list {
     flex-direction: column;

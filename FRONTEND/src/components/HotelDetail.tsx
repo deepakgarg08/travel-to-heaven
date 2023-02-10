@@ -11,12 +11,12 @@ export const HotelDetail: React.FC = () => {
   const dispatch = useAppDispatch();
   const { hotelDetails, lang } = useAppSelector((state) => state.hotels);
   console.log('hotelDetails: ', hotelDetails);
-  const navigate = useNavigate();
+  const loremText = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
   useEffect(() => {
     dispatch(clearSearchState());
     const hotelId: number = +id!;
     dispatch(fetchHotelById(hotelId));
-  }, [lang]);
+  }, [dispatch, id, lang]);
 
   return (
     <div className="">
@@ -40,7 +40,7 @@ export const HotelDetail: React.FC = () => {
             <div className="hotel_details">
               <h2>{hotelDetails[0]?.name}</h2>
               <p>{hotelDetails[0]?.address}</p>
-              <p>{hotelDetails[0]?.description}</p>
+              <p>{hotelDetails[0]?.description || loremText }</p>
               <div className="deal d-flex align-items-center">
                 <span
                   className="p-1 text-center border"

@@ -67,7 +67,8 @@ export const Filter: React.FC = () => {
               Filter
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item onClick={() => dispatch(clearFilters())} className="danger">Clear Filters</Dropdown.Item>
+              
+              <Dropdown.Item onClick={() => dispatch(clearFilters())} ><div className="btn btn-danger">Clear Filters</div></Dropdown.Item>
               {/* <div className="clear_filters" onClick={() => dispatch(clearFilters())}>
                 Clear Filters
               </div> */}
