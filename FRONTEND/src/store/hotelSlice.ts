@@ -49,7 +49,6 @@ const initialState: InitialState = {
 //thunks
 export const fetchHotels = createAsyncThunk("fetchHotels", async (lang: string) => {
   const response: Hotel[] = await apiGetAllHotels(lang);
-  console.log('response: slice ', response);
   return response;
 });
 
@@ -58,19 +57,18 @@ const hotelSlice = createSlice({
   initialState,
   reducers: {
     getAllHotels(state) {
-      console.log('state: ', state);
       state.searchState = [];
       return state;
     },
 
   },
   extraReducers: (builder) => {
-    console.log('builder: ', builder);
     builder.addCase(fetchHotels.fulfilled, (state, action) => {
       state.hotels = action.payload;
     });
   },
 });
+
 
 
 export const {
