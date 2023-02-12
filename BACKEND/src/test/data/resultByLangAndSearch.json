@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1515,
+        "minPrice": 290,
+        "currencyCode": "EUR",
+        "distanceToCenterKm": 1.73,
+        "name": "Hotel Adlon Kempinski Berlin",
+        "address": "Unter den Linden 77, Berlin, 10117, Deutschland",
+        "city": "Berlin",
+        "description": "Das Hotel Adlon Kempinski Berlin ist sicherlich eines der besten Hotels der Stadt. Dennoch nervt mich ein wenig, dass das Hotel sowohl in der Lobby als auch in den Restaurants überlaufen ist. So fehlt ein wenig der private Charme, den man beispielsweise im Hotel de Rome vorfindet. Dennoch ist das Hotel Adlon Kempinski Berlin ein ganz besonderes Luxushotel, das man unbedingt mal ausprobieren sollte. Ein Aufenthalt im Adlon Kempinski macht auf jeden Fall eine Menge Spaß und ist ein einmaliges Erlebnis!",
+        "firstDeal": {
+            "headline": "",
+            "details": ""
+        },
+        "firstImage": {
+            "url": "https://rt-hotels.s3.eu-central-1.amazonaws.com/4235_1.jpg",
+            "caption": "Hotel Adlon Kempinski Berlin"
+        }
+    }
+]

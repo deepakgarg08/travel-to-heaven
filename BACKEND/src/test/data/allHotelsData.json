@@ -1,0 +1,200 @@
+[
+    {
+        "id": 2384,
+        "minPrice": 252,
+        "currencyCode": "EUR",
+        "distanceToCenterKm": 5.12,
+        "name": "Waldorf Astoria Berlin",
+        "address": "Hardenbergstr. 28, Berlin, 10623, Germany",
+        "city": "Berlin",
+        "description": "Insgesamt waren wir mehr als zufrieden mit unserem Aufenthalt im Waldorf Astoria Berlin und das Hotel rangiert sicher unter den besten Hotels, in denen ich bisher war. Vom Zimmer über den Service bis zum grandiosen Frühstück war so gut wie alles perfekt und ließ keine Wünsche offen. Das Hotel ist definitiv eine der besten Adressen in Berlin und hinterlässt einen extrem positiven Eindruck.",
+        "firstDeal": {
+            "headline": "Kostenfreie dritte Nacht",
+            "details": "Reisezeitraum: bis 31. März 2022"
+        },
+        "firstImage": {
+            "url": "https://rt-hotel-images-prod.s3.amazonaws.com/2384_IcePortal_0_thumb.jpg",
+            "caption": "Vue extérieure"
+        }
+    },
+    {
+        "id": 2496,
+        "minPrice": 198,
+        "currencyCode": "EUR",
+        "distanceToCenterKm": 2.55,
+        "name": "Grand Hyatt Berlin -us",
+        "address": "Marlene-Dietrich-Platz 2, 10785 Berlin, Germany",
+        "city": "Berlin",
+        "description": "Mein Aufenthalt im Grand Hyatt Berlin war alles in allem gut, wenngleich es ein paar Schwächen gab. Der Service im Restaurant hätte besser sein müssen, die Lounge hat ebenfalls noch Potenzial nach oben und es ist schade, dass einige Zimmer direkt auf eine Hauswand blicken. Dies war es aber auch schon mit der Kritik, denn ansonsten finde ich das Hotel wirklich schön - von den stilvollen Zimmern über den tollen Erholungsbereich bis zu einem guten Frühstück und der tollen Lage passt hier alles. Ich würde definitiv wieder im Grand Hyatt Berlin übernachten und das Hotel zum Beispiel dem oftmals kaum günstigeren Hilton Berlin vorziehen.",
+        "firstDeal": {
+            "headline": "",
+            "details": ""
+        },
+        "firstImage": {
+            "url": "https://rt-hotel-images-prod.s3.amazonaws.com/2496_IcePortal_0_thumb.jpg",
+            "caption": "Vue de la piscine"
+        }
+    },
+    {
+        "id": 403,
+        "minPrice": 123,
+        "currencyCode": "EUR",
+        "distanceToCenterKm": 4.78,
+        "name": "Hotel Palace Berlin",
+        "address": "Budapester Str. 45, 10787 Berlin, Germany",
+        "city": "Berlin",
+        "description": "Ich bin in keinem Hotel so häufig zu Gast wie im Hotel Palace Berlin. Ist es deswegen das beste Hotel in Deutschland oder Europa? Keineswegs, aber das Preis-Leistungs-Verhältnis als Leaders Club Mitglied ist vermutlich nirgendwo sonst so gut. Tolle Upgrades, sehr gutes Essen und extrem freundlicher Service machen das Hotel Palace zu einem einzigartigen Haus. Das zusätzliche Feeling eines Privathotels ist ein weiterer Pluspunkt. Die Zimmer sind schön designed, allerdings verhältnismäßig klein. Auch im Erholungsbereich gibt es noch Verbesserungspotential, aber dennoch kann ich das Hotel Palace Berlin nur empfehlen - besonders in Anbetracht der oftmals sehr niedrigen Raten!",
+        "firstDeal": {
+            "headline": "",
+            "details": ""
+        },
+        "firstImage": {
+            "url": "https://reisetopia.leonardocontentcloud.com/imageRepo/6/0/88/698/852/Hotel-Palace-Berlin-Panorama-c-Franz-Br_ck_J.jpg",
+            "caption": "Exterior View Hotel Palace Berlin"
+        }
+    },
+    {
+        "id": 2685,
+        "minPrice": 145,
+        "currencyCode": "EUR",
+        "distanceToCenterKm": 5.49,
+        "name": "Hotel am Steinplatz Berlin",
+        "address": "Steinplatz 4, Berlin, Berlin, Germany",
+        "city": "Berlin",
+        "description": "Ein wirklich geniales Hotel durfte ich für meinen kurzen Aufenthalt in Berlin besuchen, das Hotel am Steinplatz trägt seine 5 Sterne zurecht und konnte mich komplett überzeugen. Schöne Zimmer, leckeres Essen, ein toller Spa-Bereich und vor allem ein genialer Service.",
+        "firstDeal": {
+            "headline": "20% discount for stays of three nights or more",
+            "details": "Valid for travel through the 31st October 2022"
+        },
+        "firstImage": {
+            "url": "https://reisetopia.leonardocontentcloud.com/imageRepo/6/0/95/925/448/berak-lobby-0007-hor-clsc_J.jpg",
+            "caption": "Lobby"
+        }
+    },
+    {
+        "id": 4040,
+        "minPrice": 159,
+        "currencyCode": "EUR",
+        "distanceToCenterKm": 4.95,
+        "name": "25hours Hotel Berlin Bikini",
+        "address": "Budapester Str. 40, 10787 Berlin, Germany",
+        "city": "Berlin",
+        "description": "",
+        "firstDeal": {
+            "headline": "",
+            "details": ""
+        },
+        "firstImage": {
+            "url": "https://reisetopia.leonardocontentcloud.com/imageRepo/4/0/59/96/521/01_terrace_J.jpg",
+            "caption": "Neni Sunrise Terrace"
+        }
+    },
+    {
+        "id": 837,
+        "minPrice": 165,
+        "currencyCode": "EUR",
+        "distanceToCenterKm": 2.15,
+        "name": "Orania.Berlin",
+        "address": "Oranienstraße 40, 10999 Berlin, Germany",
+        "city": "Berlin",
+        "description": "",
+        "firstDeal": {
+            "headline": "",
+            "details": ""
+        },
+        "firstImage": {
+            "url": "https://reisetopia.leonardocontentcloud.com/imageRepo/7/0/103/577/421/Orania.86._bedroom_J.jpg",
+            "caption": "Orania 86 Bedroom"
+        }
+    },
+    {
+        "id": 2016,
+        "minPrice": 260,
+        "currencyCode": "EUR",
+        "distanceToCenterKm": 4.16,
+        "name": "SO/ Berlin Das Stue",
+        "address": "Drakestrasse 1, Berlin, 10787, Germany",
+        "city": "Berlin",
+        "description": "Das SO/ Das Stue in Berlin ist zweifelsohne ein tolles Hotel und besticht vor allem durch den Charme des ehemaligen Botschaftsgebäudes, in welchem es untergebracht ist. Auf Grund dieser Lage sind die Möglichkeiten hinsichtlich der Größe des Spa-Bereichs natürlich begrenzt - dennoch hätte ich mir hier eine andere Lösung gewünscht, da zwei Liegen für ein ganzes Hotel schlichtweg zu wenig sind. Auch das Zimmer ist sehr schön eingerichtet, rechtfertigt meiner Meinung nach aber nicht den hohen Preis von rund 500 Euro Nacht - hätte ich dieses nicht als Upgrade erhalten, wäre ich enttäuscht gewesen. Der Service hingegen war bis auf den Mitarbeiter, welcher uns auf unser Zimmer brachte, sehr zuvorkommend, freundlich und professionell. Ich persönlich würde dennoch andere Hotels, die sich wie etwa das Waldorf Astoria Berlin auf ähnlichem Preisniveau befinden, vorziehen.",
+        "firstDeal": {
+            "headline": "",
+            "details": ""
+        },
+        "firstImage": {
+            "url": "https://reisetopia.leonardocontentcloud.com/imageRepo/5/0/90/289/6/b1y6_ho_00_p_3000x2250_J.jpg",
+            "caption": "Exterior"
+        }
+    },
+    {
+        "id": 2202,
+        "minPrice": 288,
+        "currencyCode": "EUR",
+        "distanceToCenterKm": 2.28,
+        "name": "The Ritz-Carlton Berlin",
+        "address": "Potsdamer Platz 3, Berlin, 10785, Germany",
+        "city": "Berlin",
+        "description": "Das Ritz-Carlton Berlin konnte mich auf jeden Fall überzeugen. Die neuen Zimmer sind schick, das Essen war herausragend und die Lage ist optimal für eine Stadterkundung. Der Spa-Bereich ist so natürlich noch nicht komplett, wird in der fertigen Fassung dann hoffentlich auch einen schönen Pool anbieten. Gerade durch die Buchung über Virtuoso ist dieses Hotel natürlich genial und ich kann es jedem empfehlen.",
+        "firstDeal": {
+            "headline": "20% discount for stays of four nights or more",
+            "details": "Valid for travel through the 31st of December 2021"
+        },
+        "firstImage": {
+            "url": "https://reisetopia.leonardocontentcloud.com/imageRepo/7/0/109/711/249/berzt-lobby-8280-hor-clsc_J.jpg",
+            "caption": "Lobby"
+        }
+    },
+    {
+        "id": 1515,
+        "minPrice": 290,
+        "currencyCode": "EUR",
+        "distanceToCenterKm": 1.73,
+        "name": "Hotel Adlon Kempinski Berlin",
+        "address": "Unter den Linden 77, Berlin, 10117, Germany",
+        "city": "Berlin",
+        "description": "Das Hotel Adlon Kempinski Berlin ist sicherlich eines der besten Hotels der Stadt. Dennoch nervt mich ein wenig, dass das Hotel sowohl in der Lobby als auch in den Restaurants überlaufen ist. So fehlt ein wenig der private Charme, den man beispielsweise im Hotel de Rome vorfindet. Dennoch ist das Hotel Adlon Kempinski Berlin ein ganz besonderes Luxushotel, das man unbedingt mal ausprobieren sollte. Ein Aufenthalt im Adlon Kempinski macht auf jeden Fall eine Menge Spaß und ist ein einmaliges Erlebnis!",
+        "firstDeal": {
+            "headline": "",
+            "details": ""
+        },
+        "firstImage": {
+            "url": "https://rt-hotels.s3.eu-central-1.amazonaws.com/4235_1.jpg",
+            "caption": "Hotel Adlon Kempinski Berlin"
+        }
+    },
+    {
+        "id": 1549,
+        "minPrice": 290,
+        "currencyCode": "EUR",
+        "distanceToCenterKm": 0.87,
+        "name": "Rocco Forte Hotel de Rome Berlin",
+        "address": "Behrenstrasse 37, Berlin, 10117, Germany",
+        "city": "Berlin",
+        "description": "Insgesamt gehört das Hotel de Rome Berlin sicherlich zu den besten Luxushotels in der Hauptstadt. Lage, Zimmer und vor allem Spa können überzeugen. Auch die luxuriös gestalteten Zimmer sind ein positives Merkmal, hier merkt man den hohen Anspruch des Hotels. Schwächen hat das Hotel de Rome zwar im Bereich des Frühstücks, das Essen im Restaurant ist dagegen sehr gut. Wer nach einem echten Luxushotel in Berlin sucht, ist im Hotel de Rome sicherlich richtig - besonders bei der Buchung mit Vorteilen.",
+        "firstDeal": {
+            "headline": "Kostenfreie dritte Nacht & garantiertes Upgrade",
+            "details": "Reisezeitraum: bis 31. März 2022"
+        },
+        "firstImage": {
+            "url": "https://reisetopia.leonardocontentcloud.com/imageRepo/7/0/114/763/14/Hotel_de_Rome_-_Rooftop_Terrace_2_J.jpg",
+            "caption": "Hotel De Rome - Rooftop Terrace"
+        }
+    },
+    {
+        "id": 1924,
+        "minPrice": 304,
+        "currencyCode": "EUR",
+        "distanceToCenterKm": 1.1,
+        "name": "Regent Berlin",
+        "address": "Charlottenstrasse 49, Berlin, 10117, Germany",
+        "city": "Berlin",
+        "description": "Das Regent Berlin gehört sicherlich zu den besten Hotels in der Haupstadt. Obwohl das Zimmer insgesamt etwas altbacken wirkte, kann ich das Hotel insgesamt nur weiterempfehlen. Das tolle Restaurant mit sehr leckerem Frühstück und der sehr gute Service blieben mir positiv in Erinnerung. Wer ein echtes Spa-Erlebnis möchte sollte sich allerdings nach anderen Alternativen umsehen.",
+        "firstDeal": {
+            "headline": "Third Night Free",
+            "details": "Valid for travel through the 31st December 2021"
+        },
+        "firstImage": {
+            "url": "https://reisetopia.leonardocontentcloud.com/imageRepo/6/0/101/734/617/BERCT_5766828750_J.jpg",
+            "caption": "Hotel-Lobby"
+        }
+    }
+]

@@ -3,6 +3,7 @@ import Controller from "../interfaces/controller.interface";
 import HttpException from "../utils/exceptions/http.exceptions";
 import HotelService from "../services/hotels/hotel.service";
 import logger from "../utils/logger";
+
 /**
  * these import can be used to validate the monogoose schema
  * import validationMiddleware from "../../middlewares/validation.middleware";

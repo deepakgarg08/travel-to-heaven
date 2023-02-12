@@ -3,3 +3,8 @@
 
 ### To run 
 `npm run dev`
+
+### To run test cases
+`npm run mocha`
+or
+`npm test`
