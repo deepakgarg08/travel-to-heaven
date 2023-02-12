@@ -8,3 +8,6 @@
 `npm run mocha`
 or
 `npm test`
+
+### To run test cases and generate report of test cases
+`npm run mocha:report`

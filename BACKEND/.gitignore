@@ -3,3 +3,5 @@ dist
 .env
 .ebextensions/
 build
+logs
+**/mochawesome-report/*
